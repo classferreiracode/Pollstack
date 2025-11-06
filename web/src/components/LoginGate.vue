@@ -14,6 +14,6 @@ onMounted(async () => {
   <div class="card" style="margin-bottom:16px">
     <template v-if="!state.checked"><em>Verificando acesso premium…</em></template>
     <template v-else-if="state.premium"><strong>Acesso premium ativo.</strong> Salas privadas liberadas.</template>
-    <template v-else><strong>Versão gratuita.</strong> Integre Patreon/apoia.se para liberar premium.</template>
+    <template v-else><strong>Versão gratuita.</strong> Salas privadas bloqueadas.</template>
   </div>
 </template>
