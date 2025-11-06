@@ -130,8 +130,6 @@ app.post("/polls/:id/close", async (req, res) => {
 });
 
 // ===== Static (serve front build) =====
-import path from "path";
-import { fileURLToPath } from "url";
 const publicDir = path.join(__dirname, "public");
 
 app.use(express.static(publicDir));
