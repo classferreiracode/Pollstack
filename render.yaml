@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: pollstack
+    env: node
+    plan: free
+    rootDir: server
+    buildCommand: |
+      cd ../web
+      npm ci
+      npm run build
+      cp -r dist ../server/public
+      cd ../server
+      npm ci
+    startCommand: node index.js
+    envVars:
+      - key: PORT
+        value: 4000
+      - key: PUBLIC_URL
+        value: https://pollstack.onrender.com
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
