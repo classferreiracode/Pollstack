@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, synthwave;
+}
+
+html, body {
+    @apply bg-base-100 text-base-content font-sans;
+}
