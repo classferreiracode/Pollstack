@@ -28,7 +28,7 @@ async function onCreated(payload) {
         </div>
       </nav>
   </header>
-  <main>
+  <main class="container mx-auto p-6">
     <LoginGate />
 
     <section v-if="state.view==='create'">
@@ -36,14 +36,22 @@ async function onCreated(payload) {
     </section>
 
     <section v-else-if="state.view==='live'">
-      <div v-if="state.links" class="card" style="margin-bottom:16px">
-        <strong>Links rápidos</strong>
-        <div class="row" style="margin-top:8px">
-          <div><small>Votação pública:</small><br/><input :value="state.links.publicUrl" readonly style="width:100%"/></div>
-          <div><small>Overlay:</small><br/><input :value="state.links.overlayUrl" readonly style="width:100%"/></div>
-          <div style="display:flex; gap:8px; margin-top:8px">
-            <a :href="state.links.publicUrl" target="_blank">Abrir votação</a>
-            <a :href="state.links.overlayUrl" target="_blank">Abrir overlay</a>
+      <div v-if="state.links" class="card bg-base-100 shadow-sm mb-8">
+        <div class="card-body space-y-4">
+          <h2 class="card-title">Links rápidos</h2>
+          <div class="flex flex-col">
+            <small>Votação pública:</small>
+            <input :value="state.links.publicUrl" readonly class="w-full input"/>
+          </div>
+          <div class="flex flex-col">
+            <small>Overlay:</small>
+            <input :value="state.links.overlayUrl" readonly class="w-full input"/>
+          </div>
+          <div class="flex gap-4 mt-2">
+            <a :href="state.links.publicUrl" target="_blank" class="btn btn-sm btn-accent">Abrir votação</a>
+            <a :href="state.links.overlayUrl" target="_blank" class="btn btn-sm btn-info">Abrir overlay</a>
+            <!-- fechar votacao -->
+            <a :href="state.links.publicUrl" target="_blank" class="btn btn-sm btn-error">Fechar votação</a>
           </div>
         </div>
       </div>
@@ -51,10 +59,3 @@ async function onCreated(payload) {
     </section>
   </main>
 </template>
-
-<style scoped>
-.card{ border:1px solid #eee; border-radius:16px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,.05) }
-.row{ display:grid; gap:12px }
-button{ padding:10px 14px; border:1px solid #ddd; background:#fff; cursor:pointer; border-radius:10px }
-button:disabled{ opacity:.5; cursor:not-allowed }
-</style>

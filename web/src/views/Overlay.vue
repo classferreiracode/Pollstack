@@ -23,20 +23,23 @@ onMounted(()=>{
 </script>
 
 <template>
-  <div style="background:transparent; color:#FFF; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif; width:640px;">
-    <h2 v-if="poll" style="margin:0 0 8px 0; font-weight:600; text-shadow:0 1px 2px rgba(0,0,0,.5)">{{ poll.title }}</h2>
-    <div v-if="poll" style="display:grid; gap:6px">
+  <div class="card mx-auto w-full">
+    <div v-if="poll" class="card-body">
+      <h2 v-if="poll" class="card-title">{{ poll.title }}</h2>
       <div v-for="opt in poll.options" :key="opt.id">
-        <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:2px;">
-          <span style="text-shadow:0 1px 2px rgba(0,0,0,.5)">{{ opt.text }}</span>
-          <span style="text-shadow:0 1px 2px rgba(0,0,0,.5)">{{ percent(opt.votes) }}%</span>
+        <div class="flex justify-between mb-2">
+          <span>{{ opt.text }}</span>
+          <span>{{ percent(opt.votes) }}%</span>
         </div>
-        <div style="height:10px; background:rgba(255,255,255,.2); border-radius:999px; overflow:hidden;">
-          <div :style="`height:100%; width:${percent(opt.votes)}%; background: linear-gradient(90deg, #3A86FF, #8338EC);`"></div>
+        <div class="flex items-center gap-2">
+          <progress class="progress progress-primary w-full" :value="percent(opt.votes)" min="0"
+            max="100"></progress>
         </div>
       </div>
     </div>
-    <div v-else style="color:#EEE">Carregando…</div>
+    <div v-else class="card-body">
+      Carregando…
+    </div>
   </div>
 </template>
 

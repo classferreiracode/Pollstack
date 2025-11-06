@@ -53,9 +53,3 @@ function addOption(){ if(options.value.length>=12) return; options.value.push('N
   </div>
 </template>
 
-
-<style scoped>
-.card{ border:1px solid #eee; border-radius:16px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,.05) }
-.row{ display:grid; gap:12px }
-button{ padding:10px 14px; border:1px solid #ddd; background:#fff; cursor:pointer; border-radius:10px }
-</style>
