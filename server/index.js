@@ -130,9 +130,15 @@ app.post("/polls/:id/close", async (req, res) => {
 });
 
 // ===== Static (serve front build) =====
-app.use(express.static(path.join(__dirname, "public")));
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+import path from "path";
+import { fileURLToPath } from "url";
+const publicDir = path.join(__dirname, "public");
+
+app.use(express.static(publicDir));
+
+// Redireciona qualquer rota desconhecida para index.html (Vue Router SPA)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicDir, "index.html"));
 });
 
 // ===== HTTP + Socket.IO =====
