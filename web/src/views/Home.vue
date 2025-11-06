@@ -17,6 +17,17 @@ async function onCreated(payload) {
 </script>
 
 <template>
+  <header>
+    <nav class="navbar bg-base-100 shadow-sm px-4">
+        <div class="flex-1">
+          <img src="@/assets/imgs/pollstack.png" class="h-8" alt="Logo" />
+        </div>
+        <div class="flex gap-2">
+          <button class="btn btn-sm btn-primary" @click="state.view='create'">Nova Enquete</button>
+          <button class="btn btn-sm btn-secondary" @click="state.view='live'" :disabled="!state.poll">Ao Vivo</button>
+        </div>
+      </nav>
+  </header>
   <main>
     <LoginGate />
 
